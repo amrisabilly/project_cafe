@@ -24,7 +24,7 @@
                     <a href="coffee_admin.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">COFFEE</a>
                     <a href="non_coffee_admin.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">NON COFFEE</a>
                     <a href="main_course_admin.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">MAIN COURSE</a>
-                    <a href="#" class="btn text-white py-3" style="background-color: #683434;width: 100%;">APPETIZER & DESSERT</a>
+                    <a href="desert_admin.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">APPETIZER & DESSERT</a>
                     <a href="#" class="btn text-white py-3" style="background-color: #683434;width: 100%;">DAFTAR PESANAN</a>
                 </div>
             </div>

@@ -18,7 +18,7 @@
 <body style="font-family: 'Inknut Antiqua', serif;">
     <section class="">
         <div class="d-flex justify-content-center align-items-center" style="background-color: #D9D9D9;width: 100%;height: 5em;margin-top: 3em;margin-bottom: 3em;">
-            <h1 class="fw-bold text-center" style="font-size: 20px;">NON COFFEE</h1>
+            <h1 class="fw-bold text-center" style="font-size: 20px;">APPETIZER & DESSERT</h1>
         </div>
 
         <div class="d-flex flex-column justify-content-center align-items-center px-3 gap-3">

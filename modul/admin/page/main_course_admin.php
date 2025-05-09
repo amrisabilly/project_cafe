@@ -58,10 +58,10 @@
             <input type="file" accept="image/*" style="border-radius: 5px;align-self: flex-start;margin-left: 10%;" />
             <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Nama Menu</label>
             <input placeholder="Nama Menu" style="padding: 5px; width: 80%;border-radius: 5px;"></input>
-            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Catatan</label>
-            <input placeholder="Catatan" style="padding: 5px; width: 80%;border-radius: 5px;"></input>
-            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Jumlah</label>
-            <input type="number" placeholder="Jumlah" style="padding: 5px; width: 80%; border-radius: 5px;" />
+            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Deskripsi</label>
+            <input placeholder="Deskripsi" style="padding: 5px; width: 80%;border-radius: 5px;"></input>
+            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Harga</label>
+            <input type="number" placeholder="Harga" style="padding: 5px; width: 80%; border-radius: 5px;" />
             <div class="d-flex justify-content-between align-items-center" style="width: 80%;margin-top: 1em;">
                 <button id="cancelButton" class="rounded-3" style="background-color:rgb(212, 46, 46);">Batal</button>
                 <button id="submitButton" class="rounded-3" style="background-color:rgb(17, 222, 89);">Submit</button>
@@ -75,10 +75,10 @@
             <input id="imageInputEdit" type="file" accept="image/*" style="border-radius: 5px;align-self: flex-start;margin-left: 10%;" />
             <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Nama Menu</label>
             <input placeholder="Nama Menu" style="padding: 5px; width: 80%;border-radius: 5px;"></input>
-            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Catatan</label>
-            <input placeholder="Catatan" style="padding: 5px; width: 80%;border-radius: 5px;"></input>
-            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Jumlah</label>
-            <input type="number" placeholder="Jumlah" style="padding: 5px; width: 80%; border-radius: 5px;" />
+            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Deskripsi</label>
+            <input placeholder="Deskripsi" style="padding: 5px; width: 80%;border-radius: 5px;"></input>
+            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Harga</label>
+            <input type="number" placeholder="Harga" style="padding: 5px; width: 80%; border-radius: 5px;" />
             <div class="d-flex justify-content-between align-items-center" style="width: 80%;margin-top: 1em;">
                 <button id="cancelEditButton" class="rounded-3" style="background-color:rgb(212, 46, 46);">Batal</button>
                 <button id="submitEditButton" class="rounded-3" style="background-color:rgb(17, 222, 89);">Submit</button>
