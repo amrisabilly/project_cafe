@@ -19,12 +19,13 @@
             <h1 class="fw-bold text-center" style="font-size: 20px;">MENU ADMIN</h1>
         </div>
         <div class="d-flex justify-content-center align-items-center" style="margin-top: 3em;">
-            <div class="card text-white" style="width: 18rem;height: 27em;background-color: #D9D9D9;border: none;">
+            <div class="card text-white" style="width: 18rem;height: 29em;background-color: #D9D9D9;border: none;">
                 <div class="card-body d-flex flex-column justify-content-between align-items-center py-4">
                     <a href="coffee_admin.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">COFFEE</a>
                     <a href="non_coffee_admin.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">NON COFFEE</a>
                     <a href="main_course_admin.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">MAIN COURSE</a>
                     <a href="desert_admin.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">APPETIZER & DESSERT</a>
+                    <a href="tambah_menu_admin.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">TAMBAH MENU</a>
                     <a href="#" class="btn text-white py-3" style="background-color: #683434;width: 100%;">DAFTAR PESANAN</a>
                 </div>
             </div>
