@@ -13,9 +13,6 @@
         case 'about':
             $content = 'modul/landing/about.php';
             break;
-        case 'contact':
-            $content = 'modul/landing/contact.php';
-            break;
         default:
             $content = 'modul/landing/home.php';
     }
