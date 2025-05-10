@@ -45,7 +45,7 @@
     </div>
 
     <!-- Form Add -->
-    <form action="../../../config/add_menu.php" method="post">
+    <form action="../../../config/admin/add_menu.php" method="post" enctype="multipart/form-data">
         <div id="formContainerAdd" class="form" style="background-color: #AF5C5C; position: fixed; bottom: 0; width: 100%; height: 35em; padding: 2em; border-top-left-radius: 1.5rem; border-top-right-radius: 1.5rem; font-size: 14px;">
             <div style="background-color: #EAABAB; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 0.6em; border-radius: 1.5rem;">
                 <!-- Preview Gambar -->
