@@ -29,30 +29,49 @@
             <h1 class="fw-bold text-center" style="font-size: 20px;">COFFEE</h1>
         </div>
 
-        <div class="d-flex justify-center align-items-center p-4" style="width: 100%;">
-            <div class="d-flex justify-center align-items-center rounded-3" style="background-color: #B7DBFD;width: 100%;height: 3em;">
-                <h1 class="text-center p-3" style="font-size: 17px;margin: 0;">Pesanan Berhasil Ditambahkan!!!</h1>
+        <?php
+        if (isset($_GET['status']) && $_GET['status'] == 'success') {
+        ?>
+            <div class="d-flex justify-center align-items-center p-4" style="width: 100%;">
+                <div class="d-flex justify-center align-items-center rounded-3" style="background-color: #B7DBFD;width: 100%;height: 3em;">
+                    <h1 class="text-center p-3" style="font-size: 17px;margin: 0;">Pesanan Berhasil Ditambahkan!!!</h1>
+                </div>
             </div>
-        </div>
+        <?php
+        } elseif (isset($_GET['status']) && $_GET['status'] == 'error') {
+            echo '<div class="alert alert-danger text-center" role="alert">Pesanan Gagal Ditambahkan!!!</div>';
+        }
+        ?>
 
         <div class="d-flex flex-column justify-content-center align-items-center px-3 gap-3">
-            <div class="rounded-4 d-flex justify-content-between align-items-center px-4" style="background-color: #D9D9D9;width: 100%;height: 5em;">
-                <div class="d-flex justify-content-between align-items-center gap-3">
-                    <img src="../../../public/admin/unnamed.jpg" alt="" class="rounded-3" style="width: 38px;height: 38px;">
-                    <div class="d-flex flex-column justify-content-center" style="padding-top: 12px">
-                        <h3 class="fw-bold" style="font-size: 14px;">Nasi Ayam Geprek</h3>
-                        <p style="font-size: 14px;">Rp <span>18.000</span></p>
+            <?php
+            include '../../../config/koneksi.php';
+            $query = "SELECT * FROM menu";
+            $result = mysqli_query($koneksi, $query);
+            while ($row = mysqli_fetch_assoc($result)) {
+                $id = $row['id_produk'];
+                $nama = $row['nama_produk'];
+                $harga = $row['harga'];
+                $foto = $row['foto'];
+            ?>
+                <div class="rounded-4 d-flex justify-content-between align-items-center px-4" style="background-color: #D9D9D9;width: 100%;height: 5em;">
+                    <div class="d-flex justify-content-between align-items-center gap-3">
+                        <img src="../../../<?php echo $foto; ?>" alt="" class="rounded-3" style="width: 38px;height: 38px;">
+                        <div class="d-flex flex-column justify-content-center" style="padding-top: 12px">
+                            <h3 class="fw-bold" style="font-size: 14px;"><?php echo $nama; ?></h3>
+                            <p style="font-size: 14px;">Rp <span><?php echo $harga; ?></span></p>
+                        </div>
+                    </div>
+                    <div>
+                        <button style="border: none; background-color: transparent;">
+                            <img src="../../../public/admin/Trash.png" alt="" class="rounded-3" style="width: 26px;height: 29px;">
+                        </button>
+                        <button class="edit<?= $id?>" style="border: none; background-color: transparent;">
+                            <img src="../../../public/admin/Edit.png" alt="" class="rounded-3" style="width: 26px;height: 29px;">
+                        </button>
                     </div>
                 </div>
-                <div>
-                    <button style="border: none; background-color: transparent;">
-                        <img src="../../../public/admin/Trash.png" alt="" class="rounded-3" style="width: 26px;height: 29px;">
-                    </button>
-                    <button class="edit" style="border: none; background-color: transparent;">
-                        <img src="../../../public/admin/Edit.png" alt="" class="rounded-3" style="width: 26px;height: 29px;">
-                    </button>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </section>
 
@@ -63,41 +82,45 @@
     </div>
 
     <!-- Form Edit -->
-    <div id="formContainerEdit" class="form" style="background-color: #AF5C5C; position: fixed; bottom: 0; width: 100%; height: 35em; padding: 2em; display: none; border-top-left-radius: 1.5rem; border-top-right-radius: 1.5rem; font-size: 14px;">
-        <div style="background-color: #EAABAB; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 0.6em; border-radius: 1.5rem;">
-            <!-- Preview Gambar -->
-            <div style="width: 70px; height: 70px; border-radius: 8px; border: 1px solid #ccc; display: flex; overflow: hidden; background-color: #f8f8f8;align-self: flex-start; margin-left: 10%;">
-                <img id="imagePreviewEdit" src="#" alt="Preview Gambar" style="width: 100%; height: 100%; object-fit: cover; display: none;" />
-            </div>
 
-            <!-- Input File -->
-            <input id="imageInputEdit" type="file" accept="image/*" style="border-radius: 5px; align-self: flex-start; margin-left: 10%; border: none; visibility: hidden;" />
-            <label for="imageInputEdit" class="text-black" style="cursor: pointer; color: white; background-color: #ffffff; padding: 5px 10px; border-radius: 5px; font-size: 14px;align-self: flex-start; margin-left: 10%;">Pilih Gambar</label>
-
-            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Nama Menu</label>
-            <input placeholder="Ayam Geprek" style="padding: 5px; width: 80%; border-radius: 5px; border: none;" />
-
-            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Kategori</label>
-            <select style="padding: 1px; width: 80%; border-radius: 5px; font-size: 13px; border: none;">
-                <option value="Main Course" style="font-size: 10px;">Main Course</option>
-                <option value="Appetizer" style="font-size: 10px;">Appetizer</option>
-                <option value="Dessert" style="font-size: 10px;">Dessert</option>
-                <option value="Beverage" style="font-size: 10px;">Beverage</option>
-            </select>
-
-            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Harga</label>
-            <input type="number" placeholder="Rp. " style="padding: 5px; width: 80%; border-radius: 5px; border: none;" />
-
-            <div class="d-flex justify-content-between align-items-center" style="width: 80%; margin-top: 1em;">
-                <button id="cancelEditButton" class="rounded-3 p-1" style="background-color: #AF5C5C;">Kembali</button>
-                <button id="submitEditButton" class="rounded-3 p-1" style="background-color: #AF5C5C;">Submit</button>
-            </div>
+    <form action="" method="post">
+        <div id="formContainerEdit" class="form" style="background-color: #AF5C5C; position: fixed; bottom: 0; width: 100%; height: 35em; padding: 2em; display: none; border-top-left-radius: 1.5rem; border-top-right-radius: 1.5rem; font-size: 14px;">
+            <div style="background-color: #EAABAB; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 0.6em; border-radius: 1.5rem;">
+                <!-- Preview Gambar -->
+                <div style="width: 70px; height: 70px; border-radius: 8px; border: 1px solid #ccc; display: flex; overflow: hidden; background-color: #f8f8f8;align-self: flex-start; margin-left: 10%;">
+                    <img id="imagePreviewEdit" src="#" alt="Preview Gambar" style="width: 100%; height: 100%; object-fit: cover; display: none;" />
+                </div>
+                
+                <!-- Input File -->
+                <input id="imageInputEdit" name="foto"  type="file" accept="image/*" style="border-radius: 5px; align-self: flex-start; margin-left: 10%; border: none; visibility: hidden;" />
+                <label for="imageInputEdit" class="text-black" style="cursor: pointer; color: white; background-color: #ffffff; padding: 5px 10px; border-radius: 5px; font-size: 14px;align-self: flex-start; margin-left: 10%;">Pilih Gambar</label>
+                
+                <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Nama Menu</label>
+                <input placeholder="Ayam Geprek" name="nama" value="<?=$nama?>" style="padding: 5px; width: 80%; border-radius: 5px; border: none;" />
+                
+                <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Kategori</label>
+                <select name="kategori" style="padding: 1px; width: 80%; border-radius: 5px; font-size: 13px; border: none;">
+                    <option value="Main Course" style="font-size: 10px;">Main Course</option>
+                    <option value="Appetizer" style="font-size: 10px;">Appetizer</option>
+                    <option value="Dessert" style="font-size: 10px;">Dessert</option>
+                    <option value="Beverage" style="font-size: 10px;">Beverage</option>
+                </select>
+                
+                <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Harga</label>
+                <input name="harga" value="<?= $harga ?>" type="number" placeholder="Rp. " style="padding: 5px; width: 80%; border-radius: 5px; border: none;" />
+                
+                <div class="d-flex justify-content-between align-items-center" style="width: 80%; margin-top: 1em;">
+                    <button id="cancelEditButton" class="rounded-3 p-1" style="background-color: #AF5C5C;">Kembali</button>
+                    <button id="submitEditButton" class="rounded-3 p-1" style="background-color: #AF5C5C;">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 
+    
     <script>
         // Ambil elemen tombol edit, form edit, input file, dan preview gambar
-        const editButtons = document.querySelectorAll('.edit'); // Mengambil semua tombol dengan kelas 'edit'
+        const editButtons = document.querySelectorAll('.edit<?= $id?>'); // Mengambil semua tombol dengan kelas 'edit'
         const formContainerEdit = document.getElementById('formContainerEdit');
         const cancelEditButton = document.getElementById('cancelEditButton');
         const imageInputEdit = document.getElementById('imageInputEdit');
