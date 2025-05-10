@@ -1,10 +1,10 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Papa Kita</title>
+    <title>Cafe Pupaq Nine</title>
 
     <!-- Boostrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
@@ -22,21 +22,20 @@
             <h1 class="fw-bold text-center pt-1" style="font-size: 20px;">Cafe Pupaq Nine</h1>
         </div>
 
-        <div class="d-flex flex-column justify-content-center align-items-center" style="margin-top: 5em;">
+        <div class="d-flex justify-content-center align-items-center" style="margin-top: 5em;">
             <div class="rounded-5 p-3 d-flex flex-column justify-content-evenly align-items-center" style="width: 18rem;height: 20rem;border:#000000 3px solid;">
-                <h1 class="text-center" style="font-size: 22px;">Anda gagal masuk !
+                <h3 class="text-center">Anda gagal masuk !
                     Username atau Password Anda
-                    ada yang salah
-                </h1>
+                    ada yang salah</h3>
+                <a href="login.php" class="d-flex justify-content-center align-items-center" style="width: 100%;text-decoration: none;">
+                    <button type="button" class="btn text-white mt-3 rounded-4" style="background-color: #15FB3B;width: 50%;border: black 2px solid">
+                        LOGIN
+                    </button>
+                </a>
             </div>
-            <a href="../login/login.php" class="d-flex justify-content-center align-items-center" style="text-decoration: none;width: 50%;">
-                <button type="button" class="btn text-white mt-3 rounded-4" style="background-color: #15FB3B;width: 50%;border: black 2px solid">
-                    LOGIN
-                </button>
-            </a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
 
-</html> -->
+</html>
