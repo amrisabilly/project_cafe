@@ -18,40 +18,40 @@
 <body style="font-family: 'Inknut Antiqua', serif;">
     <div>
         <div class="d-flex justify-content-center align-items-center gap-3" style="background-color: #D9D9D9;width: 100%;height: 5em;margin-top: 3em;">
-            <img src="../../../../public/admin/Coffee.png" alt="" style="width: 40px;">
+            <img src="../../../public/admin/Coffee.png" alt="" style="width: 40px;">
             <h1 class="fw-bold text-center pt-1" style="font-size: 20px;">Cafe Pupaq Nine</h1>
         </div>
 
         <div class="px-4">
             <div class="d-flex rounded-1 flex-column justify-content-center align-items-center gap-5" style="margin-top: 4.4em;font-size: 14px;">
                 <div class="d-flex justify-content-center align-items-center gap-4 shadow" style="background-color: red;width: 100%;">
-                    <img src="../../../../public/admin/Clock.png" alt="clock" style="width: 40px;height: 40px;">
+                    <img src="../../../public/admin/Clock.png" alt="clock" style="width: 40px;height: 40px;">
                     <div class="d-flex flex-column mt-3">
                         <p class="fw-bold">Menunggu Antrean</p>
                         <div class="d-flex gap-2">
-                            <img src="../../../../public/admin/Alarm 5.png" style="width: 20px;height: 20px;" alt="">
+                            <img src="../../../public/admin/Alarm 5.png" style="width: 20px;height: 20px;" alt="">
                             <p>Pesanan masuk pukul 19.20</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="d-flex rounded-1 justify-content-center align-items-center gap-4 shadow" style="background-color: #FCC689;width: 100%;">
-                    <img src="../../../../public/admin/Group 50.png" alt="clock" style="width: 40px;height: 40px;">
+                    <img src="../../../public/admin/Group 50.png" alt="clock" style="width: 40px;height: 40px;">
                     <div class="d-flex flex-column mt-3">
                         <p class="fw-bold">Menunggu Antrean</p>
                         <div class="d-flex gap-2">
-                            <img src="../../../../public/admin/Alarm 5.png" style="width: 20px;height: 20px;" alt="">
+                            <img src="../../../public/admin/Alarm 5.png" style="width: 20px;height: 20px;" alt="">
                             <p>Pesanan masuk pukul 19.20</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="d-flex rounded-1 justify-content-center align-items-center gap-4 shadow" style="background-color: #85C9E2;width: 100%;">
-                    <img src="../../../../public/admin/Icon.png" alt="clock" style="width: 40px;height: 40px;">
+                    <img src="../../../public/admin/Icon.png" alt="clock" style="width: 40px;height: 40px;">
                     <div class="d-flex flex-column mt-3">
                         <p class="fw-bold">Menunggu Antrean</p>
                         <div class="d-flex gap-2">
-                            <img src="../../../../public/admin/Alarm 5.png" style="width: 20px;height: 20px;" alt="">
+                            <img src="../../../public/admin/Alarm 5.png" style="width: 20px;height: 20px;" alt="">
                             <p>Pesanan masuk pukul 19.20</p>
                         </div>
                     </div>

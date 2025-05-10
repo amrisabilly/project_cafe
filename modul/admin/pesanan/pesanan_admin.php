@@ -18,7 +18,7 @@
 <body style="font-family: 'Inknut Antiqua', serif;">
     <section class="mb-5">
         <div class="d-flex justify-content-center align-items-center gap-3" style="background-color: #D9D9D9;width: 100%;height: 5em;margin-top: 3em;margin-bottom: 3em;">
-            <img src="../../../../public/admin/Coffee.png" alt="" style="width: 40px;">
+            <img src="../../../public/admin/Coffee.png" alt="" style="width: 40px;">
             <h1 class="fw-bold text-center pt-1" style="font-size: 20px;">Cafe Pupaq Nine</h1>
         </div>
 
@@ -42,7 +42,7 @@
 
     <div class="tombol d-flex justify-content-between align-items-center" style="background-color: #AF5C5C; position: fixed; bottom: 0; width: 100%; height: 4em; padding: 2em;">
         <a href="../menu/menu_admin.php" class="fw-bold text-black" id="backButton" style="background-color: transparent;border: none;font-size: 15px;text-decoration: none;">
-            <img src="../../../../public/admin/kembali.png" alt="kembali">
+            <img src="../../../public/admin/kembali.png" alt="kembali">
             Kembali</a>
     </div>
 

@@ -26,7 +26,7 @@
 <body style="font-family: 'Inknut Antiqua', serif;">
     <section class="mb-5">
         <div class="d-flex justify-content-center align-items-center" style="background-color: #D9D9D9;width: 100%;height: 5em;margin-top: 3em;margin-bottom: 0.5em;">
-            <h1 class="fw-bold text-center" style="font-size: 20px;">NON COFFEE</h1>
+            <h1 class="fw-bold text-center" style="font-size: 20px;">APPETIZER & DESSERT</h1>
         </div>
 
         <div class="d-flex justify-center align-items-center p-4" style="width: 100%;">
@@ -38,7 +38,7 @@
         <div class="d-flex flex-column justify-content-center align-items-center px-3 gap-3">
             <div class="rounded-4 d-flex justify-content-between align-items-center px-4" style="background-color: #D9D9D9;width: 100%;height: 5em;">
                 <div class="d-flex justify-content-between align-items-center gap-3">
-                    <img src="../../../../public/admin/unnamed.jpg" alt="" class="rounded-3" style="width: 38px;height: 38px;">
+                    <img src="../../../public/admin/unnamed.jpg" alt="" class="rounded-3" style="width: 38px;height: 38px;">
                     <div class="d-flex flex-column justify-content-center" style="padding-top: 12px">
                         <h3 class="fw-bold" style="font-size: 14px;">Nasi Ayam Geprek</h3>
                         <p style="font-size: 14px;">Rp <span>18.000</span></p>
@@ -46,10 +46,10 @@
                 </div>
                 <div>
                     <button style="border: none; background-color: transparent;">
-                        <img src="../../../../public/admin/Trash.png" alt="" class="rounded-3" style="width: 26px;height: 29px;">
+                        <img src="../../../public/admin/Trash.png" alt="" class="rounded-3" style="width: 26px;height: 29px;">
                     </button>
                     <button class="edit" style="border: none; background-color: transparent;">
-                        <img src="../../../../public/admin/Edit.png" alt="" class="rounded-3" style="width: 26px;height: 29px;">
+                        <img src="../../../public/admin/Edit.png" alt="" class="rounded-3" style="width: 26px;height: 29px;">
                     </button>
                 </div>
             </div>
@@ -58,7 +58,7 @@
 
     <div class="tombol d-flex justify-content-between align-items-center" style="background-color: #AF5C5C; position: fixed; bottom: 0; width: 100%; height: 4em; padding: 2em;">
         <a href="menu_admin.php" class="fw-bold text-black" id="backButton" style="background-color: transparent;border: none;font-size: 15px;text-decoration: none;">
-            <img src="../../../../public/admin/kembali.png" alt="kembali">
+            <img src="../../../public/admin/kembali.png" alt="kembali">
             Kembali</a>
     </div>
 

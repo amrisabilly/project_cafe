@@ -14,8 +14,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body style="font-family: 'Inknut Antiqua', serif;">
-    <a href="menu_admin.php" style="text-decoration: none;">
-        <div class="bg-image d-flex justify-content-center align-items-center text-center text-white" style="background-image: url('../../../public/admin/barista.png'); height: 100vh; background-size: cover; background-position: center;box-shadow: 0 15px 8px rgba(0, 0, 0, 0.5);">
+    <a href="login/index.php" style="text-decoration: none;">
+        <div class="bg-image d-flex justify-content-center align-items-center text-center text-white" style="background-image: url('../../public/admin/barista.png'); height: 100vh; background-size: cover; background-position: center;box-shadow: 0 15px 8px rgba(0, 0, 0, 0.5);">
             <h1 class="" >Welcome to<br>Cafe Papuq Nine</h1>
         </div>
     </a>

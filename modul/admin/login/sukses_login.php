@@ -18,7 +18,7 @@
 <body style="font-family: 'Inknut Antiqua', serif;">
     <div>
         <div class="d-flex justify-content-center align-items-center gap-3" style="background-color: #D9D9D9;width: 100%;height: 5em;margin-top: 3em;">
-            <img src="../../../../public/admin/Coffee.png" alt="" style="width: 40px;">
+            <img src="../../../public/admin/Coffee.png" alt="" style="width: 40px;">
             <h1 class="fw-bold text-center pt-1" style="font-size: 20px;">Cafe Pupaq Nine</h1>
         </div>
 
