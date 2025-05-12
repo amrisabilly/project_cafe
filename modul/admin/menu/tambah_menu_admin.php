@@ -64,8 +64,10 @@
             <select name="kategori" style="padding: 1px; width: 80%; border-radius: 5px; font-size: 13px; border: none;">
                 <option value="Main Course" style="font-size: 10px;">Main Course</option>
                 <option value="Appetizer" style="font-size: 10px;">Appetizer</option>
-                <option value="Dessert" style="font-size: 10px;">Dessert</option>
+                <option value="Dessert" selected style="font-size: 10px;">Dessert</option>
                 <option value="Beverage" style="font-size: 10px;">Beverage</option>
+                <option value="Coffee" style="font-size: 10px;">Coffee</option>
+                <option value="Non Coffee" style="font-size: 10px;">Non Coffee</option>
             </select>
             
             <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Harga</label>
