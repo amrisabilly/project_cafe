@@ -26,7 +26,7 @@
 <body style="font-family: 'Inknut Antiqua', serif;">
     <section class="mb-5">
         <div class="d-flex justify-content-center align-items-center" style="background-color: #D9D9D9;width: 100%;height: 5em;margin-top: 3em;margin-bottom: 0.5em;">
-            <h1 class="fw-bold text-center" style="font-size: 20px;">Non Coffee</h1>
+            <h1 class="fw-bold text-center" style="font-size: 20px;">Dessert</h1>
         </div>
 
         <?php
@@ -54,7 +54,7 @@
         <div class="d-flex flex-column justify-content-center align-items-center px-3 gap-3">
             <?php
             include '../../../config/koneksi.php';
-            $query = "SELECT * FROM menu Where kategori = 'Non Coffee' ";
+            $query = "SELECT * FROM menu Where kategori = 'Dessert' OR kategori = 'Appetizer' ";
             $result = mysqli_query($koneksi, $query);
             while ($row = mysqli_fetch_assoc($result)) {
                 $id_produk = $row['id_produk'];
@@ -95,7 +95,7 @@
         <input type="hidden" id="action" name="action" value="edit" />
         <input type="hidden" id="id_produk" name="id_produk" value="<?php echo $id_produk ?>" />
         <input type="hidden" id="foto" name="foto_lama" value="<?php echo $foto ?>" />
-        <input type="hidden" name="halaman" value="Non Coffee" hidden />
+        <input type="text" name="halaman" id="" value="Dessert" hidden>
         <div id="formContainerEdit" class="form" style="background-color: #AF5C5C; position: fixed; bottom: 0; width: 100%; height: 35em; padding: 2em; display: none; border-top-left-radius: 1.5rem; border-top-right-radius: 1.5rem; font-size: 14px;">
             <div style="background-color: #EAABAB; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 0.6em; border-radius: 1.5rem;">
                 <!-- Preview Gambar -->
