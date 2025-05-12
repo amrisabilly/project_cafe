@@ -52,34 +52,32 @@
                 <div style="width: 70px; height: 70px; border-radius: 8px; border: 1px solid #ccc; display: flex; overflow: hidden; background-color: #f8f8f8;align-self: flex-start; margin-left: 10%;">
                     <img id="imagePreviewAdd" src="#" alt="Preview Gambar" style="width: 100%; height: 100%; object-fit: cover; display: none;" />
                 </div>
-                
-            <!-- Input File -->
-            <input name="foto" id="imageInputAdd" type="file" accept="image/*" style="border-radius: 5px; align-self: flex-start; margin-left: 10%; border: none; visibility: hidden;" />
-            <label for="imageInputAdd" class="text-black" style="cursor: pointer; color: white; background-color: #ffffff; padding: 5px 10px; border-radius: 5px; font-size: 14px;align-self: flex-start; margin-left: 10%;">Pilih Gambar</label>
 
-            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Nama Menu</label>
-            <input name="nama" placeholder="Nama Menu" style="padding: 5px; width: 80%; border-radius: 5px; border: none;" />
-            
-            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Kategori</label>
-            <select name="kategori" style="padding: 1px; width: 80%; border-radius: 5px; font-size: 13px; border: none;">
-                <option value="Main Course" style="font-size: 10px;">Main Course</option>
-                <option value="Appetizer" style="font-size: 10px;">Appetizer</option>
-                <option value="Dessert" selected style="font-size: 10px;">Dessert</option>
-                <option value="Beverage" style="font-size: 10px;">Beverage</option>
-                <option value="Coffee" style="font-size: 10px;">Coffee</option>
-                <option value="Non Coffee" style="font-size: 10px;">Non Coffee</option>
-            </select>
-            
-            <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Harga</label>
-            <input name="harga" type="number" placeholder="Rp. " style="padding: 5px; width: 80%; border-radius: 5px; border: none;" />
-            
-            <div class="d-flex justify-content-between align-items-center" style="width: 80%; margin-top: 1em;">
-                <a href="menu_admin.php">
-                    <button class="rounded-3 p-1" style="background-color: #AF5C5C;">Kembali</button>
-                </a>
-                <button id="submit" class="rounded-3 p-1" style="background-color: #AF5C5C;">Tambah</button>
+                <!-- Input File -->
+                <input name="foto" id="imageInputAdd" type="file" accept="image/*" style="border-radius: 5px; align-self: flex-start; margin-left: 10%; border: none; visibility: hidden;" />
+                <label for="imageInputAdd" class="text-black" style="cursor: pointer; color: white; background-color: #ffffff; padding: 5px 10px; border-radius: 5px; font-size: 14px;align-self: flex-start; margin-left: 10%;">Pilih Gambar</label>
+
+                <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Nama Menu</label>
+                <input name="nama" placeholder="Nama Menu" style="padding: 5px; width: 80%; border-radius: 5px; border: none;" />
+
+                <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Kategori</label>
+                <select name="kategori" style="padding: 1px; width: 80%; border-radius: 5px; font-size: 13px; border: none;">
+                    <option value="Main Course" style="font-size: 10px;">Main Course</option>
+                    <option value="Appetizer" style="font-size: 10px;">Appetizer</option>
+                    <option value="Dessert" selected style="font-size: 10px;">Dessert</option>
+                    <option value="Beverage" style="font-size: 10px;">Beverage</option>
+                    <option value="Coffee" style="font-size: 10px;">Coffee</option>
+                    <option value="Non Coffee" style="font-size: 10px;">Non Coffee</option>
+                </select>
+
+                <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Harga</label>
+                <input name="harga" type="number" placeholder="Rp. " style="padding: 5px; width: 80%; border-radius: 5px; border: none;" />
+
+                <div class="d-flex justify-content-between align-items-center" style="width: 80%; margin-top: 1em;">
+                    <a href="menu_admin.php" class="rounded-3 p-1 text-decoration-none" style="background-color: #AF5C5C; color: white; padding: 5px 10px;">Kembali</a>
+                    <button type="submit" class="rounded-3 p-1" style="background-color: #AF5C5C;">Tambah</button>
+                </div>
             </div>
-        </div>
     </form>
     </div>
 

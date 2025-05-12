@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,19 +19,18 @@
 <body style="font-family: 'Inknut Antiqua', serif;">
     <section class="">
         <div class="d-flex justify-content-center align-items-center" style="background-color: #D9D9D9;width: 100%;height: 5em;margin-top: 3em;">
-            <h1 class="fw-bold text-center" style="font-size: 20px;">MENU ADMIN</h1>
+            <h1 class="fw-bold text-center" style="font-size: 20px;">MENU USER</h1>
         </div>
         <div class="d-flex justify-content-center align-items-center" style="margin-top: 6em;">
             <div class="card text-white" style="width: 18rem;height: 24em;background-color: #D9D9D9;border: none;">
                 <div class="card-body d-flex flex-column justify-content-between align-items-center py-4">
                     <a href="coffee.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">COFFEE</a>
-                    <a href="non_coffee_admin.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">NON COFFEE</a>
-                    <a href="main_course_admin.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">MAIN COURSE</a>
-                    <a href="desert_admin.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">APPETIZER & DESSERT</a>
+                    <a href="non_coffee.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">NON COFFEE</a>
+                    <a href="main_course.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">MAIN COURSE</a>
+                    <a href="dessert.php" class="btn text-white py-3" style="background-color: #683434;width: 100%;">APPETIZER & DESSERT</a>
                 </div>
             </div>
         </div>
-
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
