@@ -3,7 +3,7 @@ session_start();
 include '../../../config/koneksi.php';
 
 // Ambil data produk kategori Coffee dari database
-$query = "SELECT * FROM menu WHERE kategori = 'Coffee'";
+$query = "SELECT * FROM menu WHERE kategori = 'Non Coffee'";
 $result = mysqli_query($koneksi, $query);
 ?>
 <!DOCTYPE html>
@@ -44,7 +44,7 @@ $result = mysqli_query($koneksi, $query);
 
     <section class="mb-5">
         <div class="d-flex justify-content-center align-items-center" style="background-color: #D9D9D9;width: 100%;height: 5em;margin-top: 3em;margin-bottom: 0.5em;">
-            <h1 class="fw-bold text-center" style="font-size: 20px;">COFFEE</h1>
+            <h1 class="fw-bold text-center" style="font-size: 20px;">Non Coffee</h1>
         </div>
 
         <div class="d-flex flex-column justify-content-center align-items-center px-3 gap-3">
@@ -79,7 +79,7 @@ $result = mysqli_query($koneksi, $query);
     <div id="formContainerEdit" class="form" style="background-color: #AF5C5C; position: fixed; bottom: 0; width: 100%; height: 29em; padding: 2em; display: none; border-top-left-radius: 1.5rem; border-top-right-radius: 1.5rem; font-size: 14px;">
         <form action="../../../config/user/menu_controller.php" method="post">
             <input type="hidden" name="action" value="add_to_cart">
-            <input type="hidden" name="kategori" value="coffee">
+            <input type="hidden" name="kategori" value="non_coffee">
             <input type="hidden" id="id_produk" name="id_produk">
             <input type="hidden" id="nama_produk" name="nama_produk">
             <input type="hidden" id="harga" name="harga">

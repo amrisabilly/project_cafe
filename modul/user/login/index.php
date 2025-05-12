@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,19 +24,19 @@
         </div>
 
         <div class="d-flex justify-content-center align-items-center" style="margin-top: 7em;">
-            <div class="rounded-5 p-3 d-flex flex-column justify-content-evenly align-items-center" style="width: 18rem;height: 20rem;border:#000000 3px solid;">
-                <h1 class="text-center fw-bold" style="font-size: 16px;">NAMA</h1>
-                <input type="text" class="form-control rounded-4" id="exampleFormControlInput1" style="border: black 2px solid" placeholder="Kamal">
-
-                <h1 class="text-center fw-bold" style="font-size: 16px;margin-top: 1em;">NO. MEJA</h1>
-                <input type="text" class="form-control rounded-4" id="exampleFormControlInput1" style="border: black 2px solid" placeholder="12">
-
-                <a href="../menu/index.php" class="d-flex justify-content-center align-items-center" style="width: 100%;text-decoration: none;">
-                    <button type="button" class="btn text-white mt-3 rounded-4" style="background-color: #15FB3B;width: 50%;border: black 2px solid">
+            <form action="../../../config/user/login_controller.php" method="post">
+                <div class="rounded-5 p-3 d-flex flex-column justify-content-evenly align-items-center" style="width: 18rem;height: 20rem;border:#000000 3px solid;">
+                    <h1 class="text-center fw-bold" style="font-size: 16px;">NAMA</h1>
+                    <input type="text" name="username" class="form-control rounded-4" id="exampleFormControlInput1" style="border: black 2px solid" placeholder="Kamal" required>
+    
+                    <h1 class="text-center fw-bold" style="font-size: 16px;margin-top: 1em;">NO. MEJA</h1>
+                    <input type="text" name="meja" class="form-control rounded-4" id="exampleFormControlInput1" style="border: black 2px solid" placeholder="12" required>
+    
+                    <button type="submit" class="btn text-white mt-3 rounded-4" style="background-color: #15FB3B;width: 50%;border: black 2px solid">
                         LOGIN
                     </button>
-                </a>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
