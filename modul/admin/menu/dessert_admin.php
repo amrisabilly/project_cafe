@@ -26,7 +26,7 @@
 <body style="font-family: 'Inknut Antiqua', serif;">
     <section class="mb-5">
         <div class="d-flex justify-content-center align-items-center" style="background-color: #D9D9D9;width: 100%;height: 5em;margin-top: 3em;margin-bottom: 0.5em;">
-            <h1 class="fw-bold text-center" style="font-size: 20px;">COFFEE</h1>
+            <h1 class="fw-bold text-center" style="font-size: 20px;">Dessert</h1>
         </div>
 
         <?php
@@ -38,8 +38,16 @@
                 </div>
             </div>
         <?php
+        } elseif (isset($_GET['status']) && $_GET['status'] == 'deleted') {
+        ?>
+            <div class="d-flex justify-center align-items-center p-4" style="width: 100%;">
+                <div class="d-flex justify-center align-items-center rounded-3" style="background-color: #B7DBFD;width: 100%;height: 3em;">
+                    <h1 class="text-center p-3" style="font-size: 17px;margin: 0;">Produk Berhasil Dihapus!!!</h1>
+                </div>
+            </div>
+        <?php
         } elseif (isset($_GET['status']) && $_GET['status'] == 'error') {
-            echo '<div class="alert alert-danger text-center" role="alert">Produk Gagal Ditambahkan!!!</div>';
+            echo '<div class="alert alert-danger text-center" role="alert">Pesanan Gagal Ditambahkan!!!</div>';
         }
         ?>
 
@@ -83,10 +91,11 @@
     </div>
 
     <!-- Form Edit -->
-    <form action="../../../config/admin/edit_dessert.php" method="post" enctype="multipart/form-data">
+    <form action="../../../config/admin/controller_menu.php" method="post" enctype="multipart/form-data">
         <input type="hidden" id="action" name="action" value="edit" />
         <input type="hidden" id="id_produk" name="id_produk" value="<?php echo $id_produk ?>" />
         <input type="hidden" id="foto" name="foto_lama" value="<?php echo $foto ?>" />
+        <input type="text" name="halaman" id="" value="Dessert" hidden>
         <div id="formContainerEdit" class="form" style="background-color: #AF5C5C; position: fixed; bottom: 0; width: 100%; height: 35em; padding: 2em; display: none; border-top-left-radius: 1.5rem; border-top-right-radius: 1.5rem; font-size: 14px;">
             <div style="background-color: #EAABAB; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 0.6em; border-radius: 1.5rem;">
                 <!-- Preview Gambar -->

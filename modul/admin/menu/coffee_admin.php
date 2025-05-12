@@ -38,6 +38,14 @@
                 </div>
             </div>
         <?php
+        } elseif (isset($_GET['status']) && $_GET['status'] == 'deleted') {
+        ?>
+            <div class="d-flex justify-center align-items-center p-4" style="width: 100%;">
+                <div class="d-flex justify-center align-items-center rounded-3" style="background-color: #B7DBFD;width: 100%;height: 3em;">
+                    <h1 class="text-center p-3" style="font-size: 17px;margin: 0;">Produk Berhasil Dihapus!!!</h1>
+                </div>
+            </div>
+        <?php
         } elseif (isset($_GET['status']) && $_GET['status'] == 'error') {
             echo '<div class="alert alert-danger text-center" role="alert">Pesanan Gagal Ditambahkan!!!</div>';
         }
@@ -83,10 +91,11 @@
     </div>
 
     <!-- Form Edit -->
-    <form action="../../../config/admin/edit_coffee.php" method="post" enctype="multipart/form-data">
+    <form action="../../../config/admin/controller_menu.php" method="post" enctype="multipart/form-data">
         <input type="hidden" id="action" name="action" value="edit" />
         <input type="hidden" id="id_produk" name="id_produk" value="<?php echo $id_produk ?>" />
         <input type="hidden" id="foto" name="foto_lama" value="<?php echo $foto ?>" />
+        <input type="hidden" name="halaman" value="Coffee" hidden />
         <div id="formContainerEdit" class="form" style="background-color: #AF5C5C; position: fixed; bottom: 0; width: 100%; height: 35em; padding: 2em; display: none; border-top-left-radius: 1.5rem; border-top-right-radius: 1.5rem; font-size: 14px;">
             <div style="background-color: #EAABAB; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 0.6em; border-radius: 1.5rem;">
                 <!-- Preview Gambar -->
@@ -124,59 +133,59 @@
     </form>
 
     <script>
-    // Ambil elemen tombol edit, form edit, input file, dan preview gambar
-    const editButtons = document.querySelectorAll('.edit');
-    const formContainerEdit = document.getElementById('formContainerEdit');
-    const cancelEditButton = document.getElementById('cancelEditButton');
-    const imageInputEdit = document.getElementById('imageInputEdit');
-    const imagePreviewEdit = document.getElementById('imagePreviewEdit');
-    const editNama = document.getElementById('editNama');
-    const editKategori = document.getElementById('editKategori');
-    const editHarga = document.getElementById('editHarga');
+        // Ambil elemen tombol edit, form edit, input file, dan preview gambar
+        const editButtons = document.querySelectorAll('.edit');
+        const formContainerEdit = document.getElementById('formContainerEdit');
+        const cancelEditButton = document.getElementById('cancelEditButton');
+        const imageInputEdit = document.getElementById('imageInputEdit');
+        const imagePreviewEdit = document.getElementById('imagePreviewEdit');
+        const editNama = document.getElementById('editNama');
+        const editKategori = document.getElementById('editKategori');
+        const editHarga = document.getElementById('editHarga');
 
-    // Event listener untuk semua tombol Edit
-    editButtons.forEach((editButton) => {
-        editButton.addEventListener('click', (event) => {
-            const parent = editButton.closest('.d-flex');
-            const id = parent.getAttribute('data-id');
-            const nama = parent.getAttribute('data-nama');
-            const harga = parent.getAttribute('data-harga');
-            const kategori = parent.getAttribute('data-kategori');
-            const foto = parent.getAttribute('data-foto');
+        // Event listener untuk semua tombol Edit
+        editButtons.forEach((editButton) => {
+            editButton.addEventListener('click', (event) => {
+                const parent = editButton.closest('.d-flex');
+                const id = parent.getAttribute('data-id');
+                const nama = parent.getAttribute('data-nama');
+                const harga = parent.getAttribute('data-harga');
+                const kategori = parent.getAttribute('data-kategori');
+                const foto = parent.getAttribute('data-foto');
 
-            // Isi form edit
-            editNama.value = nama;
-            editHarga.value = harga;
-            editKategori.value = kategori; // Set kategori sesuai data
-            imagePreviewEdit.src = `../../../${foto}`;
-            imagePreviewEdit.style.display = 'block';
+                // Isi form edit
+                editNama.value = nama;
+                editHarga.value = harga;
+                editKategori.value = kategori; // Set kategori sesuai data
+                imagePreviewEdit.src = `../../../${foto}`;
+                imagePreviewEdit.style.display = 'block';
 
-            // Tampilkan form edit
-            formContainerEdit.style.display = 'block';
+                // Tampilkan form edit
+                formContainerEdit.style.display = 'block';
+            });
         });
-    });
 
-    // Event listener untuk tombol Batal pada form Edit
-    cancelEditButton.addEventListener('click', () => {
-        formContainerEdit.style.display = 'none'; // Sembunyikan form edit
-        imagePreviewEdit.src = '#'; // Reset preview gambar
-        imagePreviewEdit.style.display = 'none'; // Sembunyikan gambar
-    });
-
-    // Event listener untuk preview gambar
-    imageInputEdit.addEventListener('change', (event) => {
-        const file = event.target.files[0]; // Ambil file yang dipilih
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                imagePreviewEdit.src = e.target.result; // Set src gambar ke hasil pembacaan file
-                imagePreviewEdit.style.display = 'block'; // Tampilkan gambar
-            };
-            reader.readAsDataURL(file); // Baca file sebagai URL data
-        } else {
-            imagePreviewEdit.src = '#'; // Reset preview gambar jika tidak ada file
+        // Event listener untuk tombol Batal pada form Edit
+        cancelEditButton.addEventListener('click', () => {
+            formContainerEdit.style.display = 'none'; // Sembunyikan form edit
+            imagePreviewEdit.src = '#'; // Reset preview gambar
             imagePreviewEdit.style.display = 'none'; // Sembunyikan gambar
-        }
-    });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+        });
+
+        // Event listener untuk preview gambar
+        imageInputEdit.addEventListener('change', (event) => {
+            const file = event.target.files[0]; // Ambil file yang dipilih
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imagePreviewEdit.src = e.target.result; // Set src gambar ke hasil pembacaan file
+                    imagePreviewEdit.style.display = 'block'; // Tampilkan gambar
+                };
+                reader.readAsDataURL(file); // Baca file sebagai URL data
+            } else {
+                imagePreviewEdit.src = '#'; // Reset preview gambar jika tidak ada file
+                imagePreviewEdit.style.display = 'none'; // Sembunyikan gambar
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>

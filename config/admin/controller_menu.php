@@ -2,16 +2,36 @@
 include '../koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $action = $_POST['action'] ;
+    $action = $_POST['action'];
+    $halaman = $_POST['halaman']; // halaman dikirim dari form
+    $redirectPage = '';
+
+    // Tentukan halaman redirect berdasarkan halaman
+    switch ($halaman) {
+        case 'Main Course':
+            $redirectPage = '../../modul/admin/menu/main_course_admin.php';
+            break;
+        case 'Dessert':
+            $redirectPage = '../../modul/admin/menu/dessert_admin.php';
+            break;
+        case 'Coffee':
+            $redirectPage = '../../modul/admin/menu/coffee_admin.php';
+            break;
+        case 'Non Coffee':
+            $redirectPage = '../../modul/admin/menu/non_coffee_admin.php';
+            break;
+        default:
+            die('Kategori tidak valid.');
+    }
 
     if ($action === 'edit') {
         // Logika untuk Edit
-        $id_produk = $_POST['id_produk'] ;
-        $nama = $_POST['nama'] ;
-        $kategori = $_POST['kategori'] ;
-        $harga = $_POST['harga'] ;
-        $fotoLama = $_POST['foto_lama'] ;
+        $id_produk = $_POST['id_produk'];
+        $nama = $_POST['nama'];
+        $harga = $_POST['harga'];
+        $fotoLama = $_POST['foto_lama'];
         $fotoDatabasePath = $fotoLama;
+        $kategori = $_POST['kategori'];
 
         // Proses upload gambar jika ada file baru
         if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
@@ -41,14 +61,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("sssii", $nama, $kategori, $fotoDatabasePath, $harga, $id_produk);
 
         if ($stmt->execute()) {
-            header('Location: ../../modul/admin/menu/dessert_admin.php?status=success');
+            header("Location: $redirectPage?status=success");
             exit;
         } else {
             die('Error: ' . $stmt->error);
         }
     } elseif ($action === 'delete') {
         // Logika untuk Delete
-        $id_produk = $_POST['id_produk'] ;
+        $id_produk = $_POST['id_produk'];
         $foto = $_POST['foto'];
 
         if (empty($id_produk)) {
@@ -65,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!empty($foto) && file_exists('../../' . $foto)) {
                 unlink('../../' . $foto);
             }
-            header('Location: ../../modul/admin/menu/dessert_admin.php?status=deleted');
+            header("Location: $redirectPage?status=deleted");
             exit;
         } else {
             die('Error: ' . $stmt->error);
