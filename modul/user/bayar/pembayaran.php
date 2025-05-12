@@ -75,32 +75,36 @@ if ($username && $meja) {
                 </div>
 
                 <!-- Metode Pembayaran -->
-                <div class="rounded-1 shadow d-flex justify-content-between align-items-center px-2" style="background-color: transparent;width: 100%;height: 5em;border: 1px solid #000000">
-                    <div class="d-flex justify-content-between align-items-center gap-3">
-                        <img src="../../../public/user/Money.png" alt="" class="rounded-3" style="width: 38px;height: 38px;">
-                        <div class="d-flex flex-column justify-content-center" style="padding-top: 12px">
-                            <h3 class="fw-bold" style="font-size: 12px;">Tunai</h3>
-                        </div>
-                    </div>
-                    <div>
-                        <input type="radio" name="metode_pembayaran" value="tunai">
-                    </div>
-                </div>
+                <form action="detail_pembayaran.php" method="post" style="margin: 0;">
+                    <input type="hidden" name="id_transaksi" value="<?php echo $transaksi['id_transaksi']; ?>">
 
-                <div class="rounded-1 shadow d-flex justify-content-between align-items-center px-2" style="background-color: transparent;width: 100%;height: 5em;border: 1px solid #000000">
-                    <div class="d-flex justify-content-between align-items-center gap-3">
-                        <img src="../../../public/admin/unnamed.jpg" alt="" class="rounded-3" style="width: 38px;height: 38px;">
-                        <div class="d-flex flex-column justify-content-center" style="padding-top: 12px">
-                            <h3 class="fw-bold" style="font-size: 12px;">QRIS</h3>
+                    <div class="rounded-1 shadow d-flex align-items-center px-2" style="background-color: transparent;width: 100%;height: 5em;border: 1px solid #000000">
+                        <div class="d-flex align-items-center gap-3" style="width: 100%;">
+                            <img src="../../../public/user/Money.png" alt="" class="rounded-3" style="width: 38px;height: 38px;">
+                            <div class="d-flex flex-column justify-content-center" style="padding-top: 12px">
+                                <h3 class="fw-bold" style="font-size: 12px;">Tunai</h3>
+                            </div>
+                        </div>
+                        <div class="ms-auto">
+                            <input type="radio" name="metode_pembayaran" value="tunai" required>
                         </div>
                     </div>
-                    <div>
-                        <input type="radio" name="metode_pembayaran" value="qris">
+                    <br>
+
+                    <div class="rounded-1 shadow d-flex align-items-center px-2" style="background-color: transparent;width: 100%;height: 5em;border: 1px solid #000000">
+                        <div class="d-flex align-items-center gap-3" style="width: 100%;">
+                            <img src="../../../public/admin/unnamed.jpg" alt="" class="rounded-3" style="width: 38px;height: 38px;">
+                            <div class="d-flex flex-column justify-content-center" style="padding-top: 12px">
+                                <h3 class="fw-bold" style="font-size: 12px;">QRIS</h3>
+                            </div>
+                        </div>
+                        <div class="ms-auto">
+                            <input type="radio" name="metode_pembayaran" value="qris" required>
+                        </div>
                     </div>
-                </div>
-            <?php else: ?>
-                <p class="text-center">Tidak ada transaksi yang ditemukan.</p>
-            <?php endif; ?>
+                <?php else: ?>
+                    <p class="text-center">Tidak ada transaksi yang ditemukan.</p>
+                <?php endif; ?>
         </div>
     </section>
 
@@ -108,13 +112,12 @@ if ($username && $meja) {
         <a href="../menu/pesanan.php" class="fw-bold text-black" id="backButton" style="background-color: transparent;border: none;font-size: 15px;text-decoration: none;">
             <img src="../../../public/admin/kembali.png" alt="kembali">
             Kembali</a>
-        <form action="proses_pembayaran.php" method="post" style="margin: 0;">
-            <?php if ($transaksi): ?>
-                <input type="hidden" name="id_transaksi" value="<?php echo $transaksi['id_transaksi']; ?>">
-                <button type="submit" class="fw-bold text-black" style="background-color: transparent;border: none;font-size: 15px;text-decoration: none;">
-                    Bayar
-                </button>
-            <?php endif; ?>
+        <?php if ($transaksi): ?>
+            <input type="hidden" name="id_transaksi" value="<?php echo $transaksi['id_transaksi']; ?>">
+            <button type="submit" class="fw-bold text-black" style="background-color: transparent;border: none;font-size: 15px;text-decoration: none;">
+                Bayar
+            </button>
+        <?php endif; ?>
         </form>
     </div>
 
