@@ -87,9 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("di", $total_harga, $id_transaksi);
         $stmt->execute();
 
-        // Hapus cart setelah checkout
-        unset($_SESSION['cart']);
-
         // Redirect ke halaman pembayaran
         header('Location: ../../modul/user/bayar/pembayaran.php');
         exit;

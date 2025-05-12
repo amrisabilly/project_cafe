@@ -44,7 +44,7 @@ $result = mysqli_query($koneksi, $query);
 
     <section class="mb-5">
         <div class="d-flex justify-content-center align-items-center" style="background-color: #D9D9D9;width: 100%;height: 5em;margin-top: 3em;margin-bottom: 0.5em;">
-            <h1 class="fw-bold text-center" style="font-size: 20px;">Non Coffee</h1>
+            <h1 class="fw-bold text-center" style="font-size: 20px;">Main Course</h1>
         </div>
 
         <div class="d-flex flex-column justify-content-center align-items-center px-3 gap-3">

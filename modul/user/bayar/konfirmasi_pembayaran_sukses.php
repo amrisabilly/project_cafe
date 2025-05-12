@@ -27,7 +27,8 @@
                 <div style="width: 100%;">
                     <h6 class="text-center fw-bold">Thank You!<br>Your Order is Confirmed</h6>
                 </div>
-                <a href="struk_pembayaran.php" style="width: 100%;text-decoration: none;">
+                <!-- Tambahkan id_transaksi ke URL -->
+                <a href="struk_pembayaran.php?id_transaksi=<?php echo $_GET['id_transaksi'] ?? ''; ?>" style="width: 100%;text-decoration: none;">
                     <button class="d-flex justify-content-center align-items-center gap-4 shadow" style="background-color: #73B66F;width: 100%;border: none;">
                         <p class="fw-bold" style="font-size: 17px;margin-top:12px;">CETAK STRUK PEMBAYARAN</p>
                     </button>
