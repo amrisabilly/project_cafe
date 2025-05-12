@@ -15,7 +15,7 @@ if ($id_transaksi && $status === 'selesai') {
 }
 
 // Ambil data transaksi dari database
-$query = "SELECT * FROM transaksi ORDER BY tanggal DESC";
+$query = "SELECT * FROM transaksi ORDER BY waktu DESC";
 $result = mysqli_query($koneksi, $query);
 ?>
 

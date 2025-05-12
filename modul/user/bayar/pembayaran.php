@@ -7,7 +7,7 @@ $username = $_SESSION['username'] ?? null;
 $meja = $_SESSION['meja'] ?? null;
 
 if ($username && $meja) {
-    $query = "SELECT * FROM transaksi WHERE username = ? AND meja = ? ORDER BY tanggal DESC LIMIT 1";
+    $query = "SELECT * FROM transaksi WHERE username = ? AND meja = ? ORDER BY waktu DESC LIMIT 1";
     $stmt = $koneksi->prepare($query);
     $stmt->bind_param("ss", $username, $meja);
     $stmt->execute();
