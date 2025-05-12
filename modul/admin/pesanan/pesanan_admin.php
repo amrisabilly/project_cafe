@@ -1,3 +1,24 @@
+<?php
+session_start();
+include '../../../config/koneksi.php';
+
+// Periksa apakah ada parameter id_transaksi dan status
+$id_transaksi = $_GET['id_transaksi'] ?? null;
+$status = $_GET['status'] ?? null;
+
+if ($id_transaksi && $status === 'selesai') {
+    // Perbarui status pesanan menjadi 'Selesai'
+    $query = "UPDATE transaksi SET status = 'Selesai' WHERE id_transaksi = ?";
+    $stmt = $koneksi->prepare($query);
+    $stmt->bind_param("i", $id_transaksi);
+    $stmt->execute();
+}
+
+// Ambil data transaksi dari database
+$query = "SELECT * FROM transaksi ORDER BY tanggal DESC";
+$result = mysqli_query($koneksi, $query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,20 +44,30 @@
         </div>
 
         <div class="d-flex flex-column justify-content-center align-items-center px-3 gap-3">
-            <div class="rounded-4 d-flex justify-content-between align-items-center px-4 shadow" style="background-color: #D9D9D9;width: 100%;height: 7em;">
-                <div class="d-flex flex-column justify-content-center pt-1" style="font-size: 12px;height: 100%;">
-                    <p class="fw-bold">Nama :<span>Kelvin</span></p>
-                    <p class="fw-bold">Meja :<span>5</span></p>
-                    <a href="detail_pesanan_admin.php" style="text-decoration: none;">Lihat Detail Pesanan</a>
-                </div>
-                <a href="status_pesanan_admin.php" style="text-decoration: none;">
-                    <button class="p-2 rounded-4 shadow" style="border: none; background-color: #73C875;font-size: 13px;">
-                        Status Pesanan
-                    </button>
-                </a>
-            </div>
-
-            
+            <?php if (mysqli_num_rows($result) > 0): ?>
+                <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                    <div class="rounded-4 d-flex justify-content-between align-items-center px-4 shadow" style="background-color: #D9D9D9;width: 100%;height: 7em;">
+                        <div class="d-flex flex-column justify-content-center pt-1" style="font-size: 12px;height: 100%;">
+                            <p class="fw-bold">Nama : <span><?php echo htmlspecialchars($row['username']); ?></span></p>
+                            <p class="fw-bold">Meja : <span><?php echo htmlspecialchars($row['meja']); ?></span></p>
+                            <a href="detail_pesanan_admin.php?id_transaksi=<?php echo $row['id_transaksi']; ?>" style="text-decoration: none;">Lihat Detail Pesanan</a>
+                        </div>
+                        <div>
+                            <?php if ($row['status'] === 'Selesai'): ?>
+                                <button class="p-2 rounded-4 shadow" style="border: none; background-color: #73C875;font-size: 13px;" disabled>Pesanan Selesai</button>
+                            <?php else: ?>
+                                <a href="status_pesanan_admin.php?id_transaksi=<?php echo $row['id_transaksi']; ?>" style="text-decoration: none;">
+                                    <button class="p-2 rounded-4 shadow" style="border: none; background-color: #73C875;font-size: 13px;">
+                                        Status Pesanan
+                                    </button>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <p class="text-center">Tidak ada transaksi.</p>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -45,11 +76,6 @@
             <img src="../../../public/admin/kembali.png" alt="kembali">
             Kembali</a>
     </div>
-
-
-    <script>
-
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
