@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    // Redirect ke halaman login jika sesi tidak ada
+    header("Location: ../login/login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,28 +39,28 @@
         </div>
 
         <?php
-        if (isset($_GET['status']) && $_GET['status'] == 'success') {
-        ?>
-            <div class="d-flex justify-center align-items-center p-4" style="width: 100%;">
-                <div class="d-flex justify-center align-items-center rounded-3" style="background-color: #B7DBFD;width: 100%;height: 3em;">
-                    <h1 class="text-center p-3" style="font-size: 17px;margin: 0;">Produk Berhasil Dirubah!!!</h1>
-                </div>
-            </div>
-        <?php
-        } elseif (isset($_GET['status']) && $_GET['status'] == 'deleted') {
-        ?>
-            <div class="d-flex justify-center align-items-center p-4" style="width: 100%;">
-                <div class="d-flex justify-center align-items-center rounded-3" style="background-color: #B7DBFD;width: 100%;height: 3em;">
-                    <h1 class="text-center p-3" style="font-size: 17px;margin: 0;">Produk Berhasil Dihapus!!!</h1>
-                </div>
-            </div>
-        <?php
-        } elseif (isset($_GET['status']) && $_GET['status'] == 'error') {
-            echo '<div class="alert alert-danger text-center" role="alert">Pesanan Gagal Ditambahkan!!!</div>';
+        if (isset($_GET['status'])) {
+            $statusMessage = '';
+            $statusClass = '';
+
+            if ($_GET['status'] == 'success') {
+                $statusMessage = 'Produk Berhasil Dirubah!';
+                $statusClass = 'alert-success';
+            } elseif ($_GET['status'] == 'deleted') {
+                $statusMessage = 'Produk Berhasil Dihapus!';
+                $statusClass = 'alert-success';
+            } elseif ($_GET['status'] == 'error') {
+                $statusMessage = 'Terjadi Kesalahan!';
+                $statusClass = 'alert-danger';
+            }
+
+            if (!empty($statusMessage)) {
+                echo "<div id='statusMessage' class='alert $statusClass text-center' role='alert'>$statusMessage</div>";
+            }
         }
         ?>
 
-        <div class="d-flex flex-column justify-content-center align-items-center px-3 gap-3">
+        <div class="d-flex flex-column justify-content-center align-items-center px-3 gap-3" style="margin-top: 4em;">
             <?php
             include '../../../config/koneksi.php';
             $query = "SELECT * FROM menu Where kategori = 'Main Course' ";
@@ -63,7 +72,7 @@
                 $kategori = $row['kategori'];
                 $foto = $row['foto'];
             ?>
-                <div class="rounded-4 d-flex justify-content-between align-items-center px-4" data-id="<?php echo $id_produk; ?>" data-nama="<?php echo $nama; ?>" data-harga="<?php echo $harga; ?>" data-foto="<?php echo $foto; ?>" style="background-color: #D9D9D9;width: 100%;height: 5em;">
+                <div class="rounded-4 d-flex justify-content-between align-items-center px-4" data-id="<?php echo $id_produk; ?>" data-nama="<?php echo $nama; ?>" data-harga="<?php echo $harga; ?>" data-foto="<?php echo $foto; ?>" data-kategori="<?php echo $kategori; ?>" style="background-color: #D9D9D9;width: 100%;height: 5em;">
                     <div class="d-flex justify-content-between align-items-center gap-3">
                         <img src="../../../<?php echo $foto; ?>" alt="" class="rounded-3" style="width: 38px;height: 38px;">
                         <div class="d-flex flex-column justify-content-center" style="padding-top: 12px">
@@ -72,9 +81,17 @@
                         </div>
                     </div>
                     <div>
-                        <button style="border: none; background-color: transparent;">
-                            <img src="../../../public/admin/Trash.png" alt="" class="rounded-3" style="width: 26px;height: 29px;">
-                        </button>
+                        <!-- Form Hapus -->
+                        <form action="../../../config/admin/controller_menu.php" method="post" style="display: inline;">
+                            <input type="hidden" name="action" value="delete">
+                            <input type="hidden" name="id_produk" value="<?php echo $id_produk; ?>">
+                            <input type="hidden" name="foto" value="<?php echo $foto; ?>">
+                            <input type="hidden" name="halaman" value="Main Course">
+                            <button type="submit" style="border: none; background-color: transparent;">
+                                <img src="../../../public/admin/Trash.png" alt="" class="rounded-3" style="width: 26px;height: 29px;">
+                            </button>
+                        </form>
+                        <!-- Tombol Edit -->
                         <button class="edit" style="border: none; background-color: transparent;">
                             <img src="../../../public/admin/Edit.png" alt="" class="rounded-3" style="width: 26px;height: 29px;">
                         </button>
@@ -109,20 +126,18 @@
                 <label for="imageInputEdit" class="text-black" style="cursor: pointer; color: white; background-color: #ffffff; padding: 5px 10px; border-radius: 5px; font-size: 14px;align-self: flex-start; margin-left: 10%;">Pilih Gambar</label>
 
                 <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Nama Menu</label>
-                <input id="editNama" name="nama" placeholder="Nama Menu" style="padding: 5px; width: 80%; border-radius: 5px; border: none;" />
+                <input id="editNama" name="nama" placeholder="Nama Menu" style="padding: 5px; width: 80%; border-radius: 5px; border: none;" required/>
 
                 <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Kategori</label>
-                <select id="editKategori" name="kategori" style="padding: 1px; width: 80%; border-radius: 5px; font-size: 13px; border: none;">
-                    <option value="Main Course" <?php echo (isset($kategori) && $kategori == 'Main Course') ? 'selected' : ''; ?>>Main Course</option>
-                    <option value="Appetizer" <?php echo (isset($kategori) && $kategori == 'Appetizer') ? 'selected' : ''; ?>>Appetizer</option>
-                    <option value="Dessert" <?php echo (isset($kategori) && $kategori == 'Dessert') ? 'selected' : ''; ?>>Dessert</option>
-                    <option value="Beverage" <?php echo (isset($kategori) && $kategori == 'Beverage') ? 'selected' : ''; ?>>Beverage</option>
+                <select id="editKategori" name="kategori" style="padding: 1px; width: 80%; border-radius: 5px; font-size: 13px; border: none;" required>
                     <option value="Coffee" <?php echo (isset($kategori) && $kategori == 'Coffee') ? 'selected' : ''; ?>>Coffee</option>
                     <option value="Non Coffee" <?php echo (isset($kategori) && $kategori == 'Non Coffee') ? 'selected' : ''; ?>>Non Coffee</option>
+                    <option value="Main Course" <?php echo (isset($kategori) && $kategori == 'Main Course') ? 'selected' : ''; ?>>Main Course</option>
+                    <option value="Dessert" <?php echo (isset($kategori) && $kategori == 'Dessert') ? 'selected' : ''; ?>>Appetizer & Dessert</option>
                 </select>
 
                 <label class="fw-bold" for="" style="align-self: flex-start; margin-left: 10%;">Harga</label>
-                <input id="editHarga" name="harga" type="number" placeholder="Rp. " style="padding: 5px; width: 80%; border-radius: 5px; border: none;" />
+                <input id="editHarga" name="harga" type="number" placeholder="Rp. " style="padding: 5px; width: 80%; border-radius: 5px; border: none;" required/>
 
                 <div class="d-flex justify-content-between align-items-center" style="width: 80%; margin-top: 1em;">
                     <button id="cancelEditButton" type="button" class="rounded-3 p-1" style="background-color: #AF5C5C;">Kembali</button>
@@ -132,6 +147,15 @@
         </div>
     </form>
 
+    <script>
+        // Sembunyikan pesan notifikasi setelah 3 detik
+        setTimeout(() => {
+            const statusMessage = document.getElementById('statusMessage');
+            if (statusMessage) {
+                statusMessage.style.display = 'none';
+            }
+        }, 2500);
+    </script>
     <script>
         // Ambil elemen tombol edit, form edit, input file, dan preview gambar
         const editButtons = document.querySelectorAll('.edit');

@@ -119,7 +119,7 @@ if ($id_transaksi) {
 
             <div class="rounded-1 shadow d-flex justify-content-between align-items-center px-2" style="background-color: transparent; width: 100%; height: 5em; border: 1px solid #000000;">
                 <div class="d-flex justify-content-between align-items-center gap-3">
-                    <img src="../../../public/user/<?php echo $metode_pembayaran === 'tunai' ? 'Money.png' : 'unnamed.jpg'; ?>" alt="" class="rounded-3" style="width: 38px; height: 38px;">
+                    <img src="../../../public/user/<?php echo $metode_pembayaran === 'tunai' ? 'Money.png' : 'qriz.png'; ?>" alt="" class="rounded-3" style="width: 38px; height: 38px;">
                     <div class="d-flex flex-column justify-content-center" style="padding-top: 10px;">
                         <h3 class="fw-bold" style="font-size: 12px;"><?php echo ucfirst($metode_pembayaran); ?></h3>
                     </div>

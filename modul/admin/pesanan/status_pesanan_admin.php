@@ -36,7 +36,7 @@ if ($id_transaksi) {
     <title>Cafe Pupaq Nine</title>
 
     <!-- Boostrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 
     <!-- Fonts Family -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,7 +79,7 @@ if ($id_transaksi) {
         <div class="px-4 content-container">
             <div class="d-flex rounded-1 flex-column justify-content-center align-items-center gap-5" style="margin-top: 9em;font-size: 14px;">
                 <!-- Status: Menunggu -->
-                <div class="d-flex justify-content-center align-items-center gap-4 shadow" style="background-color: red;width: 100%;">
+                <div class="d-flex justify-content-center align-items-center gap-4 shadow" style="background-color: red;width: 100%;display: flex;align-items: center;justify-content: center;">
                     <img src="../../../public/admin/Clock.png" alt="clock" style="width: 50px;height: 50px;">
                     <div class="d-flex flex-column mt-3">
                         <p class="fw-bold">Menunggu Antrean</p>
@@ -109,6 +109,7 @@ if ($id_transaksi) {
             Pesanan Sudah Siap
         </a>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 </body>
 

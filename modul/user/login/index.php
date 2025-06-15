@@ -27,10 +27,10 @@
             <form action="../../../config/user/login_controller.php" method="post">
                 <div class="rounded-5 p-3 d-flex flex-column justify-content-evenly align-items-center" style="width: 18rem;height: 20rem;border:#000000 3px solid;">
                     <h1 class="text-center fw-bold" style="font-size: 16px;">NAMA</h1>
-                    <input type="text" name="username" class="form-control rounded-4" id="exampleFormControlInput1" style="border: black 2px solid" placeholder="Kamal" required>
+                    <input type="text" name="username" class="form-control rounded-4" id="exampleFormControlInput1" style="border: black 2px solid" placeholder="Nama" required>
     
                     <h1 class="text-center fw-bold" style="font-size: 16px;margin-top: 1em;">NO. MEJA</h1>
-                    <input type="text" name="meja" class="form-control rounded-4" id="exampleFormControlInput1" style="border: black 2px solid" placeholder="12" required>
+                    <input type="text" name="meja" class="form-control rounded-4" id="exampleFormControlInput1" style="border: black 2px solid" placeholder="No Meja" required>
     
                     <button type="submit" class="btn text-white mt-3 rounded-4" style="background-color: #15FB3B;width: 50%;border: black 2px solid">
                         LOGIN

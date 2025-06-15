@@ -65,11 +65,17 @@ if (!empty($cart)) {
                         <div style="width: 9em;font-size: 12px;height: 100%;margin-top: 2.5em;">
                             <p>Rp. <span><?php echo number_format($item['harga'] * $item['jumlah'], 0, ',', '.'); ?></span></p>
                         </div>
+                        <form action="../../../config/user/menu_controller.php" method="post" style="display:inline;">
+                            <input type="hidden" name="action" value="remove_from_cart">
+                            <input type="hidden" name="id_produk" value="<?php echo $item['id_produk']; ?>">
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Hapus pesanan ini?')">Hapus</button>
+                        </form>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
                 <p class="text-center">Belum ada pesanan.</p>
             <?php endif; ?>
+            
 
             <div class="rounded-1 shadow d-flex justify-content-between align-items-center px-2" style="border: none; background-color: #EAABAB; width: 100%; height: 5em;">
                 <div class="d-flex justify-content-between align-items-center gap-3">

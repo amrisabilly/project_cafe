@@ -46,18 +46,18 @@ $result = mysqli_query($koneksi, $query);
         <div class="d-flex flex-column justify-content-center align-items-center px-3 gap-3">
             <?php if (mysqli_num_rows($result) > 0): ?>
                 <?php while ($row = mysqli_fetch_assoc($result)): ?>
-                    <div class="rounded-4 d-flex justify-content-between align-items-center px-4 shadow" style="background-color: #D9D9D9;width: 100%;height: 7em;">
+                    <div class="rounded-4 d-flex justify-content-between align-items-center px-4" style="background-color: #D9D9D9;width: 100%;height: 7em;border: 1px solid black">
                         <div class="d-flex flex-column justify-content-center pt-1" style="font-size: 12px;height: 100%;">
                             <p class="fw-bold">Nama : <span><?php echo htmlspecialchars($row['username']); ?></span></p>
                             <p class="fw-bold">Meja : <span><?php echo htmlspecialchars($row['meja']); ?></span></p>
                             <a href="detail_pesanan_admin.php?id_transaksi=<?php echo $row['id_transaksi']; ?>" style="text-decoration: none;">Lihat Detail Pesanan</a>
                         </div>
-                        <div>
+                        <div style="display: flex;align-items: end;flex-direction: column;gap: 1em;">
                             <?php if ($row['status'] === 'Selesai'): ?>
                                 <button class="p-2 rounded-4 shadow" style="border: none; background-color: #73C875;font-size: 13px;" disabled>Pesanan Selesai</button>
                             <?php else: ?>
                                 <a href="status_pesanan_admin.php?id_transaksi=<?php echo $row['id_transaksi']; ?>" style="text-decoration: none;">
-                                    <button class="p-2 rounded-4 shadow" style="border: none; background-color: #73C875;font-size: 13px;">
+                                    <button class="p-2 rounded-4" style="border: none; background-color: #73C875;font-size: 13px;">
                                         Status Pesanan
                                     </button>
                                 </a>

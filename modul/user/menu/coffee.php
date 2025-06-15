@@ -32,20 +32,31 @@ $result = mysqli_query($koneksi, $query);
 </head>
 
 <body style="font-family: 'Inknut Antiqua', serif;">
-    <?php if (isset($_GET['status']) && $_GET['status'] === 'added'): ?>
-        <div class="alert alert-success text-center mt-3" role="alert">
-            Menu berhasil ditambahkan ke pesanan!
-        </div>
-    <?php elseif (isset($_GET['error'])): ?>
-        <div class="alert alert-danger text-center mt-3" role="alert">
-            Terjadi kesalahan: <?php echo htmlspecialchars($_GET['error']); ?>
-        </div>
-    <?php endif; ?>
+
 
     <section class="mb-5">
         <div class="d-flex justify-content-center align-items-center" style="background-color: #D9D9D9;width: 100%;height: 5em;margin-top: 3em;margin-bottom: 0.5em;">
             <h1 class="fw-bold text-center" style="font-size: 20px;">COFFEE</h1>
         </div>
+
+        <?php
+        if (isset($_GET['status'])) {
+            $statusMessage = '';
+            $statusClass = '';
+
+            if ($_GET['status'] == 'success') {
+                $statusMessage = isset($_GET['message']) ? urldecode($_GET['message']) : 'Operasi berhasil!';
+                $statusClass = 'alert-success';
+            } elseif ($_GET['status'] == 'error') {
+                $statusMessage = isset($_GET['message']) ? urldecode($_GET['message']) : 'Terjadi kesalahan!';
+                $statusClass = 'alert-danger';
+            }
+
+            if (!empty($statusMessage)) {
+                echo "<div id='statusMessage' class='alert $statusClass text-center' role='alert'>$statusMessage</div>";
+            }
+        }
+        ?>
 
         <div class="d-flex flex-column justify-content-center align-items-center px-3 gap-3">
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
@@ -84,7 +95,7 @@ $result = mysqli_query($koneksi, $query);
             <input type="hidden" id="nama_produk" name="nama_produk">
             <input type="hidden" id="harga" name="harga">
 
-            <div style="background-color: #EAABAB; height: 100%; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 0.6em; border-radius: 1.5rem;">
+            <div style="background-color: #EAABAB; height: 24em; display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 0.6em; border-radius: 1.5rem;">
                 <!-- Preview Gambar -->
                 <div class="d-flex justify-content-between align-items-center gap-3" style="align-self: flex-start; margin-left: 10%;">
                     <div style="width: 70px; height: 70px; border-radius: 8px; border: 1px solid #ccc; display: flex; overflow: hidden; background-color: #f8f8f8;">
@@ -97,7 +108,7 @@ $result = mysqli_query($koneksi, $query);
                 <input id="editCatatan" name="catatan" placeholder="-" style="padding: 5px; width: 80%; border-radius: 5px; border: none;" />
 
                 <label class="fw-bold" for="editJumlah" style="align-self: flex-start; margin-left: 10%;">Jumlah</label>
-                <input id="editJumlah" name="jumlah" type="number" placeholder="1" style="padding: 5px; width: 80%; border-radius: 5px; border: none;" />
+                <input id="editJumlah" name="jumlah" type="number" placeholder="-" style="padding: 5px; width: 80%; border-radius: 5px; border: none;" />
 
                 <div class="d-flex justify-content-between align-items-center" style="width: 80%; margin-top: 1em;">
                     <button id="cancelEditButton" type="button" class="rounded-3 p-1" style="background-color: #AF5C5C;">Kembali</button>
@@ -106,6 +117,15 @@ $result = mysqli_query($koneksi, $query);
             </div>
         </form>
     </div>
+    <script>
+        // Sembunyikan pesan notifikasi setelah 3 detik
+        setTimeout(() => {
+            const statusMessage = document.getElementById('statusMessage');
+            if (statusMessage) {
+                statusMessage.style.display = 'none';
+            }
+        }, 2500);
+    </script>
 
     <script>
         const editButtons = document.querySelectorAll('.edit');

@@ -4,32 +4,43 @@ include '../koneksi.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? null;
-    $kategori = $_POST['kategori'] ?? null; // Tambahkan kategori untuk menentukan jenis menu
+    $kategori = $_POST['kategori'] ?? null;
 
+    // --- HAPUS PESANAN DARI KERANJANG ---
+    if ($action === 'remove_from_cart') {
+        $id_produk = $_POST['id_produk'];
+        if (isset($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $key => $item) {
+                if ($item['id_produk'] == $id_produk) {
+                    unset($_SESSION['cart'][$key]);
+                }
+            }
+            $_SESSION['cart'] = array_values($_SESSION['cart']);
+        }
+        header('Location: ../../modul/user/menu/pesanan.php?status=success&message=' . urlencode("Pesanan berhasil dihapus!"));
+        exit;
+    }
+
+    // --- TAMBAH PESANAN KE KERANJANG ---
     if ($action === 'add_to_cart') {
-        // Ambil data menu dari form
         $id_produk = $_POST['id_produk'];
         $nama_produk = $_POST['nama_produk'];
         $harga = $_POST['harga'];
         $jumlah = $_POST['jumlah'];
         $catatan = $_POST['catatan'] ?? '';
 
-        // Simpan data menu ke dalam session
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
         }
 
-        // Periksa apakah menu sudah ada di cart
         $found = false;
         foreach ($_SESSION['cart'] as &$item) {
             if ($item['id_produk'] === $id_produk) {
-                $item['jumlah'] += $jumlah; // Tambahkan jumlah jika menu sudah ada
+                $item['jumlah'] += $jumlah;
                 $found = true;
                 break;
             }
         }
-
-        // Jika menu belum ada, tambahkan ke cart
         if (!$found) {
             $_SESSION['cart'][] = [
                 'id_produk' => $id_produk,
@@ -37,22 +48,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'harga' => $harga,
                 'jumlah' => $jumlah,
                 'catatan' => $catatan,
-                'kategori' => $kategori, // Tambahkan kategori ke dalam cart
+                'kategori' => $kategori,
             ];
         }
-
-        // Redirect kembali ke halaman kategori yang sesuai
-        header("Location: ../../modul/user/menu/{$kategori}.php?status=added");
+        header("Location: ../../modul/user/menu/{$kategori}.php?status=success&message=" . urlencode("Menu berhasil ditambahkan ke keranjang!"));
         exit;
-    } elseif ($action === 'checkout') {
-        // Proses checkout
+    }
+
+    // --- CHECKOUT DAN HAPUS KERANJANG ---
+    if ($action === 'checkout') {
         $username = $_SESSION['username'] ?? 'Guest';
         $meja = $_SESSION['meja'] ?? 'Unknown';
         $cart = $_SESSION['cart'] ?? [];
         $total_harga = 0;
 
         if (empty($cart)) {
-            header('Location: ../../modul/user/menu/pesanan.php?error=empty_cart');
+            header('Location: ../../modul/user/menu/pesanan.php?status=error&message=' . urlencode("Keranjang kosong!"));
             exit;
         }
 
@@ -87,7 +98,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bind_param("di", $total_harga, $id_transaksi);
         $stmt->execute();
 
-        // Redirect ke halaman pembayaran
+        // HAPUS KERANJANG SETELAH CHECKOUT
+        unset($_SESSION['cart']);
+
         header('Location: ../../modul/user/bayar/pembayaran.php');
         exit;
     }

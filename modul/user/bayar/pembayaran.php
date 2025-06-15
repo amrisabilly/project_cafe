@@ -14,6 +14,7 @@ if ($username && $meja) {
     $result = $stmt->get_result();
     $transaksi = $result->fetch_assoc();
 
+
     if ($transaksi) {
         // Ambil detail transaksi
         $query = "
@@ -32,6 +33,10 @@ if ($username && $meja) {
 } else {
     $transaksi = null;
     $details = null;
+}
+
+if ($transaksi && $transaksi['status'] === 'Selesai') {
+    unset($_SESSION['cart']);
 }
 ?>
 <!DOCTYPE html>
@@ -75,7 +80,7 @@ if ($username && $meja) {
                 </div>
 
                 <!-- Metode Pembayaran -->
-                <form action="detail_pembayaran.php" method="post" style="margin: 0;">
+                <form action="detail_pembayaran.php" method="post" style="margin: 0;width: 100%;height: 100%;display:flex; flex-direction: column;align-items: center; gap: 0.5em;">
                     <input type="hidden" name="id_transaksi" value="<?php echo $transaksi['id_transaksi']; ?>">
 
                     <div class="rounded-1 shadow d-flex align-items-center px-2" style="background-color: transparent;width: 100%;height: 5em;border: 1px solid #000000">
@@ -93,7 +98,7 @@ if ($username && $meja) {
 
                     <div class="rounded-1 shadow d-flex align-items-center px-2" style="background-color: transparent;width: 100%;height: 5em;border: 1px solid #000000">
                         <div class="d-flex align-items-center gap-3" style="width: 100%;">
-                            <img src="../../../public/admin/unnamed.jpg" alt="" class="rounded-3" style="width: 38px;height: 38px;">
+                            <img src="../../../public/user/qriz.png" alt="" class="rounded-3" style="width: 38px;height: 38px;">
                             <div class="d-flex flex-column justify-content-center" style="padding-top: 12px">
                                 <h3 class="fw-bold" style="font-size: 12px;">QRIS</h3>
                             </div>

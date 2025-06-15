@@ -31,11 +31,11 @@
                 <form action="../../../config/admin/login.php" method="post">
                     <h1 class="text-center" style="font-size: 16px;">NAMA ADMIN</h1>
                     <input type="text" class="form-control rounded-4" id="exampleFormControlInput1"
-                        style="border: black 2px solid" name="username" placeholder="Masukkan Nama Admin">
+                        style="border: black 2px solid" name="username" placeholder="Masukkan Nama Admin" required>
 
                     <h1 class="text-center" style="font-size: 16px;margin-top: 1em;">PASSWORD</h1>
                     <input type="text" class="form-control rounded-4" id="exampleFormControlInput1"
-                        style="border: black 2px solid" name="password" placeholder="Masukkan Nama Admin">
+                        style="border: black 2px solid" name="password" placeholder="Masukkan Nama Admin" required>
 
                     <div class="d-flex justify-content-center align-items-center"
                         style="width: 100%;text-decoration: none;">
